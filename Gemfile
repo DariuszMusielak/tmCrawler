@@ -4,6 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 group :development do
   gem 'sqlite3', '1.3.8'
+  gem "erb2haml"
+  gem 'better_errors'
 end
 
 group :production do
@@ -11,6 +13,13 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
+group :development, :test do
+  gem 'pry', '0.9.11.3'
+  gem 'pry-remote'
+  gem 'pry-debugger'
+end
+
+gem 'haml-rails'
 gem 'sass-rails',   '4.0.1'
 gem 'uglifier', '2.1.1'
 gem 'coffee-rails', '4.0.1'
