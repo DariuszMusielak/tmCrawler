@@ -1,9 +1,51 @@
+
+@keyframes myfirst
+{
+0%   {border: 3px solid white;}
+25%  {border: 3px solid yellow;}
+50%  {border: 3px solid blue;}
+75%  {border: 3px solid green;}
+100% {border: 3px solid red;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+0%   {border: 3px solid orange;}
+25%  {border: 3px solid yellow;}
+50%  {border: 3px solid blue;}
+75%  {border: 3px solid green;}
+100% {border: 3px solid red;}
+}
+
+
+
 .home {
   &.index {
     .photo {
       width: 260px;
       margin: 0 auto;
       height: 260px;
+      opacity: 0.75;
+    }
+
+    .photo:hover {
+      position:relative;
+      animation-name: error;
+      animation-duration:2s;
+      animation-timing-function: ease-in-out;
+      animation-delay:0s;
+      animation-iteration-count: 1;
+      animation-direction:alternate;
+      animation-play-state:running;
+
+      /* Safari and Chrome: */
+      -webkit-animation-name: error;
+      -webkit-animation-duration:2s;
+      -webkit-animation-timing-function: ease;
+      -webkit-animation-delay:0s;
+      -webkit-animation-iteration-count:1;
+      -webkit-animation-direction:alternate;
+      -webkit-animation-play-state:running;
     }
 
     .photo-name {
@@ -12,5 +54,85 @@
     .photos {
       margin-top: 150px;
     }
+  }
+}
+
+@-moz-keyframes spin {
+  0%   {
+    -moz-transform: rotate(360deg);
+  }
+  25%  {
+    -moz-transform: rotate(720deg);
+  }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes spin {
+  0%   {
+    -webkit-transform: rotate(360deg);
+  }
+  25%  {
+    -webkit-transform: rotate(720deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0%   {
+    transform: rotate(360deg);
+  }
+  25%  {
+    transform: rotate(720deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes error {
+  from {
+    transform: scale(1.0) rotateX(360deg);
+    opacity: 0.75;
+  }
+  50% {
+    transform: scale(1.2) rotateX(360deg);
+    opacity: 1.0;
+  }
+  to {
+    transform: scale(1.0) rotateX(360deg);
+    opacity: 0.75;
+  }
+}
+
+@-webkit-keyframes error {
+  from {
+    -webkit-transform: scale(1.0) rotateX(0deg);
+    opacity: 0.75;
+  }
+  50% {
+    -webkit-transform: scale(1.2) rotateX(360deg);
+    opacity: 1.0;
+  }
+  to {
+    -webkit-transform: scale(1.0) rotateX(360deg);
+    opacity: 0.75;
+  }
+}
+
+@-moz-keyframes error {
+  from {
+    -moz-transform: scale(1.0) rotateX(360deg);
+    opacity: 0.75;
+  }
+  50% {
+    -moz-transform: scale(1.0) rotateX(360deg);
+    opacity: 0.75;
+  }
+  to {
+    -moz-transform: scale(1.0) rotateX(360deg);
+    opacity: 0.75;
   }
 }
