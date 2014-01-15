@@ -1,0 +1,13 @@
+.home {
+  &.index {
+    .photo {
+      width: 260px;
+      margin: 0 auto;
+      height: 260px;
+    }
+
+    .photo-name {
+        text-align: center;
+      }
+  }
+}
