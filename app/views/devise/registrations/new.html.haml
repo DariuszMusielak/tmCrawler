@@ -4,11 +4,11 @@
     = f.error_notification
     .form-group
       = f.label "Email", class: 'col-lg-2'
-      .col-lg-10= f.input_field :email
+      .col-lg-10= f.input :email, required: true, :autofocus => true, label: false
     .form-group
       = f.label "Hasło", class: 'col-lg-2'
-      .col-lg-10= f.input_field :password
+      .col-lg-10= f.input :password, required: true, label: false
     .form-group
       = f.label "Powtórz hasło", class: 'col-lg-2'
-      .col-lg-10= f.input_field :password_confirmation
+      .col-lg-10= f.input :password_confirmation, required: true, label: false
     = f.button :submit, "Zarejestruj się", class: 'btn-primary'
