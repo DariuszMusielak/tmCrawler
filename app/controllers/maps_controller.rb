@@ -42,7 +42,7 @@ class MapsController < ApplicationController
   def update_map
     if @map = Map.find_by_id(params[:id])
       if @map.update_attributes(content: params[:content], status: "gotowy")
-        render json: { success: true, message: "mapa strony została poprawnie zaktualizowana" }, status: 422
+        render json: { success: true, message: "Mapa strony została poprawnie zaktualizowana" }, status: 422
       else
         render json: { success: false, message: @map.errors }, status: 422
       end
@@ -59,7 +59,7 @@ class MapsController < ApplicationController
         render json: { success: false, message: @map.errors }, status: 422
       end
     else
-      render json: { success: false, message: "brak oczekujących wiadomości" }, status: 422
+      render json: { success: false, message: "Brak oczekujących stron do zmapowania" }, status: 422
     end
   end
 
