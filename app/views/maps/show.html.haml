@@ -1,10 +1,9 @@
 %p#notice= notice
 %p
   %strong Name:
-  = @map.name
+  = map.name
 %p
   %strong Content:
-  = @map.content
-= link_to 'Edit', edit_map_path(@map)
+  = map.content
 |
 \#{link_to 'Back', maps_path}

@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'devise'
 gem 'protected_attributes'
 gem 'simple_form'
+gem 'decent_exposure'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

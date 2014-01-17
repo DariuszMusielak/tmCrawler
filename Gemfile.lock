@@ -47,6 +47,7 @@ GEM
       debugger-ruby_core_source (~> 1.2.4)
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.4)
+    decent_exposure (2.3.0)
     devise (3.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -171,6 +172,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   coffee-rails (= 4.0.1)
+  decent_exposure
   devise
   erb2haml
   haml-rails
