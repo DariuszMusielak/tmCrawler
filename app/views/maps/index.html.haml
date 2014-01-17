@@ -1,18 +1,19 @@
 %h1 Listing maps
-%table
+%table.table.table-hover
   %thead
     %tr
       %th Name
       %th Content
       %th
       %th
-      %th
+      %th Actions
   %tbody
     - @maps.each do |map|
-      %tr
+      %tr{ class: correct_class(map.status) }
         %td= map.name
-        %td= map.content
+        %td= map.url
+        %td= map.status
         %td= link_to 'Show', map
         %td= link_to 'Destroy', map, method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-/ = link_to 'New Map', new_map_path TEMPORARY
+= link_to 'New Map', new_map_path

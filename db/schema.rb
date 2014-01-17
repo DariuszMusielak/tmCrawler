@@ -11,14 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140115174142) do
+ActiveRecord::Schema.define(version: 20140117181505) do
 
   create_table "maps", force: true do |t|
     t.string   "name"
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status",     default: "utworzony", null: false
+    t.string   "url"
+    t.integer  "user_id"
   end
+
+  add_index "maps", ["user_id"], name: "index_maps_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

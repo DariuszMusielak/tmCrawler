@@ -1,19 +1,19 @@
-= form_for(@map) do |f|
-  - if @map.errors.any?
+= form_for(map) do |f|
+  - if map.errors.any?
     #error_explanation
       %h2
-        = pluralize(@map.errors.count, "error")
+        = pluralize(map.errors.count, "error")
         prohibited this map from being saved:
       %ul
-        - @map.errors.full_messages.each do |msg|
+        - map.errors.full_messages.each do |msg|
           %li= msg
   .field
     = f.label :name
     %br/
     = f.text_field :name
   .field
-    = f.label :content
+    = f.label :url
     %br/
-    = f.text_field :content
+    = f.text_field :url
   .actions
     = f.submit

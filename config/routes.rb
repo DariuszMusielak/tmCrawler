@@ -10,7 +10,8 @@ TmCrawler::Application.routes.draw do
      root to: "home#index", as: "root"
   end
 
-  resources :maps, only: [:index, :show, :destroy]
+  resources :maps, only: [:index, :show, :destroy, :create, :new]
 
-  post '/maps/create_rasberrypi', to: "maps#create_rasberrypi", as: 'create_rasberrypi'
+  put '/maps/update_map', to: "maps#update_map", as: 'update_map'
+  post '/maps/get_pending', to: "maps#get_pending", as: 'get_pending'
 end
