@@ -13,4 +13,5 @@
         %td= map.status
         %td.text-right
           = link_to 'Pokaż', map, class: "btn btn-default btn-sm"
-          = link_to 'Usuń', map, method: :delete, remote: true, data: { confirm: 'Czy na pewno chcesz usunąć tą mapę?' }, class: "btn btn-danger btn-sm map-row-destroy"
+          - if map.user == current_user
+            = link_to 'Usuń', map, method: :delete, remote: true, data: { confirm: 'Czy na pewno chcesz usunąć tą mapę?' }, class: "btn btn-danger btn-sm map-row-destroy"
