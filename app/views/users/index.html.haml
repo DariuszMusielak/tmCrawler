@@ -2,17 +2,17 @@
 %h1
   Lista użytkowników
 %br
-%table.table.table-hover
+%table.table.table-hover.map-table
   %thead
     %tr
       %th Email
       %th.text-right Akcje
   %tbody
     - @users.each do |user|
-      %tr
+      %tr.map-row
         %td= user.email
         %td.text-right
           = link_to 'Pokaż', user_path(user), class: "btn btn-default btn-sm"
           - if user == current_user
             = link_to 'Edytuj',  edit_user_registration_path(user), class: "btn btn-default btn-sm"
-          = link_to 'Usuń', registration_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm"
+            = link_to 'Usuń', registration_path(user), method: :delete, data: { confirm: 'Czy aby na pewno chcesz usunąć swoje konto?' }, class: "btn btn-danger btn-sm"

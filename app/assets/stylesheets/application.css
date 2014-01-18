@@ -12,5 +12,7 @@
  *= require_tree .
  */
 
-@import 'tmCrawler';
 @import "bootstrap";
+@import "bootstrap-theme";
+@import "animate";
+@import 'tmCrawler';

@@ -4,6 +4,7 @@ class MapsController < ApplicationController
 
   skip_before_filter :verify_authenticity_token
   expose(:map)
+  respond_to :js, :json, :html
 
   # GET /maps
   # GET /maps.json
@@ -15,12 +16,13 @@ class MapsController < ApplicationController
     map = Map.new
   end
 
-
   def create
     map.user_id = current_user.id
     if map.save
+      flash[:notice] = "Mapa #{map.name} została utworzona"
       redirect_to maps_path
     else
+      flash[:alert] = "Coś poszło nie tak: #{map.errors.join(', ') if map.errors.any?}"
       render :new
     end
   end
@@ -33,17 +35,17 @@ class MapsController < ApplicationController
   # DELETE /maps/1
   # DELETE /maps/1.json
   def destroy
-    map.destroy
-    respond_to do |format|
-      format.html { redirect_to request.referer }
-      format.json { head :no_content }
+    if map.user == current_user && map.destroy
+      render json: :nothing
+    else
+      render json: { errors: message.errors }, status: 422
     end
   end
 
   def update_map
     if @map = Map.find_by_id(params[:id])
       if @map.update_attributes(content: params[:content], status: "gotowy")
-        render json: { success: true, message: "Mapa strony została poprawnie zaktualizowana" }, status: 422
+        render json: { success: true, message: "Mapa strony została poprawnie zaktualizowana" }, status: 200
       else
         render json: { success: false, message: @map.errors }, status: 422
       end
@@ -55,7 +57,7 @@ class MapsController < ApplicationController
   def get_pending
     if @map = Map.status_created.first
       if @map.update_attributes(status: "wyslany")
-        render json: { success: true, message: { id: @map.id, url: @map.url } }, status: 422
+        render json: { success: true, message: { id: @map.id, url: @map.url } }, status: 200
       else
         render json: { success: false, message: @map.errors }, status: 422
       end
@@ -68,7 +70,7 @@ class MapsController < ApplicationController
 
   def check_premissions
     unless params[:key] == "kurczak"
-      render json: { success: false, message: "brak autoryzacji" }, status: 422
+      render json: { success: false, message: "Brak autoryzacji" }, status: 422
     end
   end
 end

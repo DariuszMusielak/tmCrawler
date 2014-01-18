@@ -22,3 +22,8 @@ footer {
 input[type="email"], input[type="password"], input[type="text"], input[type="url"]  {
   width: 400px;
 }
+
+.alert-dismissable {
+  display: none;
+  background-color: transparent;
+}
