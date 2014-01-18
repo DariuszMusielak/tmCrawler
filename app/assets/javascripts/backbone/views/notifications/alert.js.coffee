@@ -3,7 +3,6 @@ class TmCrawler.Views.Alert extends Backbone.View
 
   events:
     'click .alert-dismissable' : 'ByClick'
-    'ajax:error' : 'showNotice'
 
   initialize: ->
     @removed = false
