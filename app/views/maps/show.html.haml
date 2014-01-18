@@ -1,15 +1,15 @@
 %p#notice= notice
-%p
-  %strong Name:
-  = map.name
-%p
-  %strong Url:
-  = map.url
-%p
-  %strong Statu:
-  = map.status
-%p
-  %strong Content:
-  = map.content
-|
-\#{link_to 'Back', maps_path}
+%dl
+  %dt
+    %h4 Nazwa:
+  %dd= map.name
+  %dt
+    %h4 Url:
+  %dd= map.url
+  %dt
+    %h4 Status:
+  %dd= map.status
+  %dt
+    %h4 Zawartość
+  %dd= map.content
+= link_to "Wstecz", request.referer, class: "btn btn-default btn-sm"

@@ -1,19 +1,13 @@
-= form_for(map) do |f|
-  - if map.errors.any?
-    #error_explanation
-      %h2
-        = pluralize(map.errors.count, "error")
-        prohibited this map from being saved:
-      %ul
-        - map.errors.full_messages.each do |msg|
-          %li= msg
-  .field
-    = f.label :name
-    %br/
-    = f.text_field :name
-  .field
-    = f.label :url
-    %br/
-    = f.text_field :url
-  .actions
-    = f.submit
+= form_for map, url: maps_path(map), html: { method: :post, class: "form form-horizontal" } do |f|
+  .form-group
+    = f.label "Nazwa", class: 'col-sm-2 control-label', for: "name"
+    .col-sm-10
+      = f.text_field :name, required: true, autofocus: true, label: false, placeholder: "Nazwa", class: "form-control"
+  .form-group
+    = f.label "Url", class: 'col-sm-2 control-label', for: "url"
+    .col-sm-10
+      = f.text_field :url, required: true, autofocus: false, label: false, placeholder: "Url", class: "form-control"
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Utwórz", class: "btn btn-success btn-sm"
+      = link_to "Wstecz", maps_path, class: "btn btn-default btn-sm"

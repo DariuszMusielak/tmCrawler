@@ -1,18 +1,18 @@
-%h1 Listing users
-%table.table
+%br
+%h1
+  Lista użytkowników
+%br
+%table.table.table-hover
   %thead
     %tr
-      %th Name
       %th Email
-      %th Actions
+      %th.text-right Akcje
   %tbody
     - @users.each do |user|
       %tr
-        %td= user.name
         %td= user.email
-        %td
-          = link_to 'Show', user_path(user)
-          |
-          = link_to 'Edit', edit_user_registration_path(user)
-          |
-          = link_to 'Destroy', registration_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+        %td.text-right
+          = link_to 'Pokaż', user_path(user), class: "btn btn-default btn-sm"
+          - if user == current_user
+            = link_to 'Edytuj',  edit_user_registration_path(user), class: "btn btn-default btn-sm"
+          = link_to 'Usuń', registration_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm"

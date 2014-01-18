@@ -1,20 +1,6 @@
-%h1 Listing maps
-%table.table.table-hover
-  %thead
-    %tr
-      %th Name
-      %th Url
-      %th Status
-      %th Actions
-  %tbody
-    - @maps.each do |map|
-      %tr{ class: correct_class(map.status) }
-        %td= map.name
-        %td= map.url
-        %td= map.status
-        %td
-          = link_to 'Show', map
-          |
-          = link_to 'Destroy', map, method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-= link_to 'New Map', new_map_path
+%br
+%h1
+  Lista map
+  = link_to 'Utwórz nową mapę', new_map_path, class: "btn btn-success btn-lg pull-right"
+%br
+= render partial: 'maps_table', locals: { maps: @maps }

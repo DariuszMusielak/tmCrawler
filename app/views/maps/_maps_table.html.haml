@@ -1,0 +1,17 @@
+%table.table.table-hover
+  %thead
+    %tr
+      %th Nazwa
+      %th Url
+      %th Status
+      %th.text-right Akcje
+  %tbody
+    - maps.each do |map|
+      %tr{ class: correct_class(map.status) }
+        %td= map.name
+        %td= map.url
+        %td= map.status
+        %td.text-right
+          = link_to 'Pokaż', map, class: "btn btn-default btn-sm"
+          = link_to 'Usuń', map, method: :delete, data: { confirm: 'Czy na pewno chcesz usunąć tą mapę?' }, class: "btn btn-danger btn-sm"
+

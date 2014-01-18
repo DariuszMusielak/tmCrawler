@@ -12,11 +12,12 @@ class MapsController < ApplicationController
   end
 
   def new
-
+    map = Map.new
   end
 
 
   def create
+    map.user_id = current_user.id
     if map.save
       redirect_to maps_path
     else
@@ -34,7 +35,7 @@ class MapsController < ApplicationController
   def destroy
     map.destroy
     respond_to do |format|
-      format.html { redirect_to maps_url }
+      format.html { redirect_to request.referer }
       format.json { head :no_content }
     end
   end

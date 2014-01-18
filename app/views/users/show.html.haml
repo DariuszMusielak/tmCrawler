@@ -1,8 +1,14 @@
 %p#notice= notice
-%p
-  %strong Name:
-  = @user.name
-%p
-  %strong Email:
-  = @user.email
-= link_to 'Edit',  edit_user_registration_path(@user)
+%dl
+  %dt
+    %h4 Email:
+  %dd
+    = @user.email
+    - if @user == current_user
+      = link_to 'Edytuj',  edit_user_registration_path(@user), class: "btn btn-default btn-sm"
+  - if @user.maps.present?
+    %dt
+      %h4 Mapy użytkownika:
+    %dd
+      = render partial: 'maps/maps_table', locals: { maps: @user.maps }
+= link_to "Wstecz", users_path, class: "btn btn-default btn-sm"

@@ -1,18 +1,26 @@
 %h2
-  Edit #{resource_name.to_s.humanize}
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, :required => true, :autofocus => true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    = f.input :password, :autocomplete => "off", :hint => "leave it blank if you don't want to change it", :required => false
-    = f.input :password_confirmation, :required => false
-    = f.input :current_password, :hint => "we need your current password to confirm your changes", :required => true
-  .form-actions
-    = f.button :submit, "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
-= link_to "Back", :back
+  Edytuj Użytkownika
+%br
+= form_for resource, url: registration_path(resource), html: { method: :put, class: "form form-horizontal" } do |f|
+  .form-group
+    = f.label "Email", class: 'col-sm-2 control-label', for: "email"
+    .col-sm-10
+      = f.text_field :email, required: false, autofocus: true, label: false, placeholder: "Email", class: "form-control"
+  .form-group
+    = f.label "Nowe hasło", class: 'col-sm-2 control-label', for: "email"
+    .col-sm-10
+      = f.password_field :password, required: false, autofocus: false, label: false, placeholder: "Hasło", class: "form-control"
+  .form-group
+    = f.label "Powtórz hasło", class: 'col-sm-2 control-label', for: "email"
+    .col-sm-10
+      = f.password_field :password_confirmation, required: false, autofocus: false, label: false, placeholder: "Powtórz hasło", class: "form-control"
+  .form-group
+    = f.label "Obecne hasło", class: 'col-sm-2 control-label', for: "email"
+    .col-sm-10
+      = f.password_field :current_password, required: false, autofocus: false, label: false, placeholder: "Obecne hasło", class: "form-control"
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.submit "Aktualizuj", class: "btn btn-success btn-sm"
+      = link_to "Wstecz", user_path(resource), class: "btn btn-default btn-sm"
+%h3 Usuń moje konto
+= link_to "Usuń konto", registration_path(resource_name), data: { confirm: "Chcesz zniknąć z tej cudownej apki?" }, method: :delete, class: "btn btn-danger btn-sm"
